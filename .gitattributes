@@ -1,4 +1,4 @@
-# Exclude from language statistics
+# Exclude non-Rust files from language statistics
 *.ld linguist-vendored
 *.x linguist-vendored
 *.toml linguist-vendored
