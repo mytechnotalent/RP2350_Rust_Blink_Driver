@@ -1,0 +1,21 @@
+[package]
+name = "rp2350-blink"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+embassy-executor = { git = "https://github.com/embassy-rs/embassy", features = ["arch-cortex-m", "executor-thread"] }
+embassy-time = { git = "https://github.com/embassy-rs/embassy" }
+embassy-rp = { git = "https://github.com/embassy-rs/embassy", features = ["time-driver", "rp235xa", "critical-section-impl", "imagedef-secure-exe"] }
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.3"
+panic-halt = "0.2"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+debug = true
+lto = true
+opt-level = "z"
+panic = "abort"
