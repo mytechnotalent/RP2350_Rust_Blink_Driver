@@ -1,0 +1,8 @@
+# Rust files
+*.rs linguist-language=Rust
+
+# Exclude from language statistics
+*.ld linguist-vendored
+*.bat linguist-vendored
+*.py linguist-vendored
+linker.ld linguist-vendored
