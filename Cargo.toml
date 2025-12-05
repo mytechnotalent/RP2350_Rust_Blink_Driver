@@ -3,13 +3,40 @@ name = "rp2350-blink"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "rp2350-blink"
+test = false
+
+[lib]
+name = "rp2350_blink"
+path = "src/lib.rs"
+test = true
+
 [dependencies]
-embassy-executor = { git = "https://github.com/embassy-rs/embassy", features = ["arch-cortex-m", "executor-thread"] }
-embassy-time = { git = "https://github.com/embassy-rs/embassy" }
-embassy-rp = { git = "https://github.com/embassy-rs/embassy", features = ["time-driver", "rp235xa", "critical-section-impl", "imagedef-secure-exe"] }
-cortex-m = "0.7.7"
-cortex-m-rt = "0.7.3"
-panic-halt = "0.2"
+embassy-executor = { git = "https://github.com/embassy-rs/embassy", features = [
+    "arch-cortex-m",
+    "executor-thread",
+], optional = true }
+embassy-time = { git = "https://github.com/embassy-rs/embassy", optional = true }
+embassy-rp = { git = "https://github.com/embassy-rs/embassy", features = [
+    "time-driver",
+    "rp235xa",
+    "critical-section-impl",
+    "imagedef-secure-exe",
+], optional = true }
+cortex-m = { version = "0.7.7", optional = true }
+cortex-m-rt = { version = "0.7.3", optional = true }
+panic-halt = { version = "0.2", optional = true }
+
+[features]
+default = [
+    "embassy-executor",
+    "embassy-time",
+    "embassy-rp",
+    "cortex-m",
+    "cortex-m-rt",
+    "panic-halt",
+]
 
 [profile.dev]
 panic = "abort"

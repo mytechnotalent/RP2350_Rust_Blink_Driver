@@ -1,6 +1,6 @@
 /*
- * @file main.rs
- * @brief Microcontroller entry point
+ * @file lib.rs
+ * @brief Library module exports
  * @author Kevin Thomas
  * @date 2025
  *
@@ -27,55 +27,20 @@
  * SOFTWARE.
  */
 
-//! FILE: main.rs
+//! FILE: lib.rs
 //!
 //! DESCRIPTION:
-//! RP2350 Embedded Rust Embassy Blink Application.
+//! RP2350 Blink Driver Library Module Exports.
 //!
 //! BRIEF:
-//! Main application entry point for RP2350 GPIO blink driver using Embassy.
-//! Implements async LED blinking on GPIO 16.
+//! Exports all public modules for testing and reuse.
+//! Conditionally enables std for host testing.
 //!
 //! AUTHOR: Kevin Thomas
 //! CREATION DATE: November 28, 2025
 //! UPDATE DATE: December 4, 2025
 
-#![no_std]
-#![no_main]
+#![cfg_attr(not(test), no_std)]
 
-mod blink;
-mod config;
-
-use blink::{state_to_level, BlinkController};
-use embassy_executor::Spawner;
-use embassy_rp::gpio::{Level, Output};
-use embassy_time::Timer;
-use panic_halt as _;
-
-/// Main application entry point.
-///
-/// # Details
-/// Initializes Embassy runtime and runs the main blink loop.
-/// Uses BlinkController for state management.
-///
-/// # Arguments
-/// * `_spawner` - Embassy task spawner (reserved for future async tasks).
-///
-/// # Returns
-/// * `()` - Never returns (infinite loop).
-#[embassy_executor::main]
-async fn main(_spawner: Spawner) {
-    let p = embassy_rp::init(Default::default());
-    let mut led = Output::new(p.PIN_16, Level::Low);
-    let mut controller = BlinkController::new();
-
-    loop {
-        let state = controller.toggle();
-        if state_to_level(state) {
-            led.set_high();
-        } else {
-            led.set_low();
-        }
-        Timer::after_millis(controller.delay_ms()).await;
-    }
-}
+pub mod blink;
+pub mod config;

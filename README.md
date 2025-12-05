@@ -5,6 +5,10 @@
 
 <br>
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Rust](https://img.shields.io/badge/Rust-1.70+-orange.svg)](https://www.rust-lang.org/)
+[![Platform](https://img.shields.io/badge/Platform-RP2350-red.svg)](https://www.raspberrypi.com/products/rp2350/)
+[![Embassy](https://img.shields.io/badge/Embassy-Async-blue.svg)](https://embassy.dev/)
 # RP2350 Rust Blink Driver
 An RP2350 blink driver written in Rust w/ Embassy.
 
