@@ -91,4 +91,4 @@ async fn main(_spawner: Spawner) {
 <br>
 
 # License
-[Apache License 2.0](https://github.com/mytechnotalent/RP2350_Rust_Blink_Driver/blob/main/LICENSE)
+[MIT](https://github.com/mytechnotalent/RP2350_Rust_Blink_Driver/blob/main/LICENSE)
