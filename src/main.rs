@@ -68,7 +68,6 @@ async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
     let mut led = Output::new(p.PIN_16, Level::Low);
     let mut controller = BlinkController::new();
-
     loop {
         let state = controller.toggle();
         if state_to_level(state) {

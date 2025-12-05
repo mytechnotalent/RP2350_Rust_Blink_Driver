@@ -40,6 +40,13 @@ cargo clean
 
 <br>
 
+# Test
+```
+make test
+```
+
+<br>
+
 # main.rs Code
 ```rust
 /*
