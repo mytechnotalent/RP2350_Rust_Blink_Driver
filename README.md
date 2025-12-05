@@ -94,13 +94,13 @@ make test
 #![no_std]
 #![no_main]
 
-mod blink;
 mod config;
+mod led;
 
-use blink::{state_to_level, BlinkController};
 use embassy_executor::Spawner;
 use embassy_rp::gpio::{Level, Output};
 use embassy_time::Timer;
+use led::{led_state_to_level, LedController};
 use panic_halt as _;
 
 /// Main application entry point.
@@ -118,10 +118,10 @@ use panic_halt as _;
 async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
     let mut led = Output::new(p.PIN_16, Level::Low);
-    let mut controller = BlinkController::new();
+    let mut controller = LedController::new();
     loop {
         let state = controller.toggle();
-        if state_to_level(state) {
+        if led_state_to_level(state) {
             led.set_high();
         } else {
             led.set_low();
