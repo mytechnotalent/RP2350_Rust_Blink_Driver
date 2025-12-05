@@ -42,5 +42,5 @@
 
 #![cfg_attr(not(test), no_std)]
 
-pub mod blink;
 pub mod config;
+pub mod led;
