@@ -75,6 +75,8 @@ pub const MAX_BLINK_DELAY_MS: u64 = 10000;
 mod tests {
     use super::*;
 
+    // ==================== LED Configuration Tests ====================
+
     #[test]
     fn test_blink_delay_default() {
         assert_eq!(BLINK_DELAY_MS, 500);
