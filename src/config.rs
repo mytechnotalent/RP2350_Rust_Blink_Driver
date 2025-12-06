@@ -48,6 +48,7 @@
 ///
 /// # Value
 /// 500 milliseconds
+#[allow(dead_code)]
 pub const BLINK_DELAY_MS: u64 = 500;
 
 /// Minimum allowed blink delay in milliseconds.

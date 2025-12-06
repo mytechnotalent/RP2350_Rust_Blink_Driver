@@ -51,6 +51,7 @@ use crate::config::BLINK_DELAY_MS;
 /// * `On` - LED is currently on (high)
 /// * `Off` - LED is currently off (low)
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[allow(dead_code)]
 pub enum LedState {
     On,
     Off,
@@ -65,7 +66,7 @@ pub enum LedState {
 /// # Fields
 /// * `state` - Current LED state
 /// * `delay_ms` - Blink delay in milliseconds
-#[derive(Debug)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[allow(dead_code)]
 pub struct LedController {
     state: LedState,
@@ -80,6 +81,7 @@ impl Default for LedController {
     ///
     /// # Returns
     /// * `Self` - New LedController with default values
+    #[allow(dead_code)]
     fn default() -> Self {
         Self::new()
     }
@@ -140,6 +142,7 @@ impl LedController {
 ///
 /// # Returns
 /// * `bool` - true for On, false for Off
+#[allow(dead_code)]
 pub fn led_state_to_level(state: LedState) -> bool {
     matches!(state, LedState::On)
 }
