@@ -37,7 +37,7 @@
 //!
 //! AUTHOR: Kevin Thomas
 //! CREATION DATE: December 5, 2025
-//! UPDATE DATE: December 5, 2025
+//! UPDATE DATE: December 6, 2025
 
 use crate::config::BLINK_DELAY_MS;
 
@@ -66,6 +66,7 @@ pub enum LedState {
 /// * `state` - Current LED state
 /// * `delay_ms` - Blink delay in milliseconds
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct LedController {
     state: LedState,
     delay_ms: u64,
@@ -92,6 +93,7 @@ impl LedController {
     ///
     /// # Returns
     /// * `Self` - New LedController instance
+    #[allow(dead_code)]
     pub fn new() -> Self {
         Self {
             state: LedState::Off,
@@ -106,6 +108,7 @@ impl LedController {
     ///
     /// # Returns
     /// * `LedState` - New LED state after toggle
+    #[allow(dead_code)]
     pub fn toggle(&mut self) -> LedState {
         self.state = match self.state {
             LedState::On => LedState::Off,
@@ -116,8 +119,12 @@ impl LedController {
 
     /// Returns current blink delay.
     ///
+    /// # Details
+    /// Delay used for blink timing in milliseconds.
+    ///
     /// # Returns
     /// * `u64` - Delay in milliseconds
+    #[allow(dead_code)]
     pub fn delay_ms(&self) -> u64 {
         self.delay_ms
     }
